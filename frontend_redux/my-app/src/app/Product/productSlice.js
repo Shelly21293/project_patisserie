@@ -22,20 +22,23 @@ export const addProductAsync = createAsyncThunk('product/addData',async (newData
   }
 );
 
-export const delProductAsync = createAsyncThunk('product/delData',async (id) => {
-    const response = await delData(id);
+export const delProductAsync = createAsyncThunk('product/delData',async (newData) => {
+    const response = await delData(newData.id, newData.token);
     // console.log(response)
-    return id;
+    return response.data;
   }
 );
 
 export const updProductAsync = createAsyncThunk('product/updData',async (newData) => {
     console.log(newData);
-  const response = await updData({desc: newData.desc, price: newData.price}, newData.id, newData.token);
+  const response = await updData(newData.prod, newData.id, newData.token);
   // console.log(response.data);
   return response.data;
 }
 );
+
+// const response = await updData({desc: newData.desc, price: newData.price}, newData.id, newData.token);
+
 
 
 // product method

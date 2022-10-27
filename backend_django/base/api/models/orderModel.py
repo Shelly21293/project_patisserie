@@ -13,4 +13,4 @@ class Order(models.Model):
     createdTime=models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-     	return {self._id}
+     	return f'ID: {self._id}, User id: {self.user_id.id}, Username: {self.user_id.username}, CreatedTime: {self.createdTime}'

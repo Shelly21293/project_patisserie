@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate, Outlet, Link, NavLink } from "react-router-dom";
 import { getProductAsync, addProductAsync, delProductAsync, selectProdList, updProductAsync } from './productSlice';
-import { doSigninAsync, selectEmail, selectUserName, logout, selectToken, doSignupAsync, selectStaff } from '../Login/loginSlice'
+import {  selectToken} from '../Login/loginSlice'
 import { CartToSend } from '../Cart_Order/cartSlice'
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
@@ -45,12 +45,16 @@ export function Product_Staff_GUI() {
   const dispatch = useDispatch();
   const [desc, setDesc] = useState("");
   const [price, setPrice] = useState(0);
-  const [update, setUpdate] = useState("");
   const [category, setCategory] = useState(0);
   const [expanded, setExpanded] = React.useState(false);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+  const [change1, setChange1] = useState("false");
+  const [change2, setChange2] = useState("0");
+
+  // let change= false;
+
 
   //run every time we open menu page
   // useEffect(() => {
@@ -60,28 +64,21 @@ export function Product_Staff_GUI() {
   //run every time we switch category
   useEffect(() => {
     if (cat_id) {
-    dispatch(getProductAsync(cat_id));}
+      dispatch(getProductAsync(cat_id));
+    }
   }, [cat_id]);
 
   // how to perform use effect so each time when the data is updated- we will see it?
+  useEffect(() => {
+    dispatch(getProductAsync(cat_id))
+  }, [change1, change2])
+
   // useEffect(() => {
   //   dispatch(getProductAsync(cat_id))
-  // }, [update])
+  // }, [prodList])
 
 
-  const Update = async(item) =>{
-    console.log(item)
-    await setUpdate({desc: item.desc, price: item.price})
-    console.log(update)
-    // UpdateSend({id: item.id, token: item.token})
-    dispatch(updProductAsync({ update, id: item.id, token: item.token }))
-  }
 
-  // const UpdateSend = (item) =>{
-  //   console.log(item)
-  //   // setUpdate({desc: item.desc, price: item.price})
-  //   dispatch(updProductAsync({ update, id: item.id, token: item.token }))
-  // }
   return (
 
     <div style={{ backgroundColor: "#fffae6", width: "fixed", height: "fixed" }}>
@@ -116,11 +113,23 @@ export function Product_Staff_GUI() {
               <CardHeader
                 subheader={prod.price}
               />
-              <IconButton color="primary" aria-label="delete" onClick={() => dispatch(delProductAsync(prod.id))}>
+              <IconButton color="primary" aria-label="delete" onClick={() => {
+                dispatch(delProductAsync({ id: prod._id, token: token }))
+                setChange2(prod._id)
+              }
+              }>
                 DELETE
               </IconButton>
-              
-              <IconButton color="primary" aria-label="update" onClick={() => dispatch(updProductAsync({ desc: desc, price: price, id: prod._id, token: token }))}>
+
+              <IconButton color="primary" aria-label="update" onClick={() => {
+                desc ? (price ? dispatch(updProductAsync({ prod: {desc: desc, price: price}, id: prod._id, token: token })) :
+                  dispatch(updProductAsync({ prod: {desc: desc}, id: prod._id, token: token }))) :
+                  dispatch(updProductAsync({ prod: {price: price}, id: prod._id, token: token }))
+
+                setChange1(price + desc)
+              }
+
+              }>
                 UPDATE
               </IconButton>
 

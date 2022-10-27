@@ -16,4 +16,4 @@ class OrderDetail(models.Model):
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE, null=False,blank=False)
     
     def __str__(self):
-     	return {self._id}
+     	return f'ID: {self._id}, Order id: {self.order_id._id}, User id: {self.order_id.user_id.id}, Username: {self.order_id.user_id.username}, Product id: {self.product_id._id}, Product desc: {self.product_id.desc}'

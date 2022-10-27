@@ -12,6 +12,7 @@ class Product(models.Model):
     image = models.ImageField(null=True,blank=True,default='/placeholder.png')
     createdTime=models.DateTimeField(auto_now_add=True)
     
-    # fields =['_id','desc','price']
+    fields =['_id','desc','price']
     def __str__(self):
-     	return {self._id,self.category_id,self.desc,self.price}
+     	return f'ID: {self._id}, Desc: {self.desc}, Price: {self.price}, Category id: {self.category_id._id}, Category desc: {self.category_id.desc}, CreatedTime: {self.createdTime}'
+

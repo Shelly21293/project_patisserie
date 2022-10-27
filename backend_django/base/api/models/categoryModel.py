@@ -10,4 +10,4 @@ class Category(models.Model):
     
     # fields =['_id','desc','price']
     def __str__(self):
-     	return {self._id}
+     	return f'Category id: {self._id}, Category desc: {self.desc}'

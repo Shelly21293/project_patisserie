@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getData } from './categoryAPI';
+import { getData, addData, delData, updData } from './categoryAPI';
 
 const initialState = {
   categoryList:[],
@@ -15,26 +15,26 @@ export const getCategoryAsync = createAsyncThunk('category/getData',async () => 
   }
 );
 
-// export const addDataAsync = createAsyncThunk('cart/addData',async (newData) => {
-//     const response = await addData(newData);
-//     // console.log(response.data);
-//     return response.data;
-//   }
-// );
+export const addCategoryAsync = createAsyncThunk('cart/addData',async (newData) => {
+    const response = await addData(newData);
+    // console.log(response.data);
+    return response.data;
+  }
+);
 
-// export const delDataAsync = createAsyncThunk('cart/delData',async (id) => {
-//     const response = await delData(id);
-//     // console.log(response)
-//     return id;
-//   }
-// );
+export const delCategoryAsync = createAsyncThunk('cart/delData',async (newData) => {
+    const response = await delData(newData.id, newData.token);
+    // console.log(response)
+    return response.data;
+  }
+);
 
-// export const updDataAsync = createAsyncThunk('shop/updData',async (newData) => {
-//   const response = await updData(newData, newData.id);
-//   // console.log(response.data);
-//   return response.data;
-// }
-// );
+export const updCategoryAsync = createAsyncThunk('shop/updData',async (newData) => {
+  const response = await updData(newData.cat, newData.id, newData.token);
+  // console.log(response.data);
+  return response.data;
+}
+);
 
 
 // category method
@@ -52,24 +52,24 @@ export const categorySlice = createSlice({
         console.log(action.payload);
         state.categoryList =action.payload;
       },)
-      // .addCase(addDataAsync.fulfilled, (state, action) => {
-      //   state.status = 'Done';
-      //   // console.log(action.payload);
-      //   state.categoryList =[...state.categoryList,action.payload];
-      // },)
-      // .addCase(delDataAsync.fulfilled, (state, action) => {
-      //   state.status = 'Done';
-      //   // console.log(action.payload);
-      //   state.categoryList = state.customerProdList.filter((x) => x.id !== action.payload);
-      // },)
+      .addCase(addCategoryAsync.fulfilled, (state, action) => {
+        state.status = 'Done';
+        // console.log(action.payload);
+        state.categoryList =[...state.categoryList,action.payload];
+      },)
+      .addCase(delCategoryAsync.fulfilled, (state, action) => {
+        state.status = 'Done';
+        // console.log(action.payload);
+        state.categoryList = state.categoryList.filter((x) => x.id !== action.payload);
+      },)
 
-      // .addCase(updDataAsync.fulfilled, (state, action) => {
-      //   state.status = 'Done';
-      //   // console.log(action.payload);
-      //   let updProd = state.category.find((x) => x.id === action.payload.id);
-      //   updProd.desc = action.payload.desc;
-      //   updProd.price = action.payload.price;
-      // },);
+      .addCase(updCategoryAsync.fulfilled, (state, action) => {
+        state.status = 'Done';
+        // console.log(action.payload);
+        // let updProd = state.category.find((x) => x.id === action.payload.id);
+        // updProd.desc = action.payload.desc;
+        // updProd.price = action.payload.price;
+      },);
   },
 });
 

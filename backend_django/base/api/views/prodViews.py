@@ -48,13 +48,22 @@ def addProduct(request):
 # delete
 @api_view(['DELETE'])
 @permission_classes([IsAdminUser])
-def deleteProduct(request, id=0):
-    if int(id) > 0: 
-        prod = Product.objects.get(_id=id)
-        prod.delete()
-        return Response("Product deleted")
-    else:
-        return Response("Product to delete was not selected")
+def deleteProduct(request, id):
+    prod = Product.objects.get(_id=id)
+    prod.delete()
+    return Response("Product deleted")
+    
+
+# # delete
+# @api_view(['DELETE'])
+# @permission_classes([IsAdminUser])
+# def deleteProduct(request, id=0):
+#     if int(id) > 0: 
+#         prod = Product.objects.get(_id=id)
+#         prod.delete()
+#         return Response("Product deleted")
+#     else:
+#         return Response("Product to delete was not selected")
 
 # UPDATE
 @api_view(['PATCH'])
