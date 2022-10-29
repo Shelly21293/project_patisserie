@@ -13,12 +13,46 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addItemToCart: (state, action) => {
-      // console.log(action.payload)
-      state.myCart = [...state.myCart, action.payload]
-      console.log(state.myCart)
-      localStorage.setItem("myCart", JSON.stringify(state.myCart))
+      console.log(action.payload)
 
+      let temp = state.myCart.find((x) => x._id === action.payload._id);
+      // console.table(state.myCart)
+      // if
+      //   (temp.amount === 1 && action.payload.amount === -1) {
+      //   return state.myCart = state.myCart.filter(x => x._id !== temp._id),localStorage.setItem("myCart", JSON.stringify(state.myCart))
+      // } else if
+      //   (temp) { return temp.amount += action.payload.amount,localStorage.setItem("myCart", JSON.stringify(state.myCart)) }
+      // else {
+      //   return state.myCart = [...state.myCart, action.payload], localStorage.setItem("myCart", JSON.stringify(state.myCart))
+   
+      // }
+
+      // localStorage.setItem("myCart", JSON.stringify(state.myCart))
+      // console.table(state.myCart)
+
+      if (temp) {
+        if (temp.amount === 1 && action.payload.amount === -1) {return state.myCart = state.myCart.filter(x => x._id !== temp._id),localStorage.setItem("myCart", JSON.stringify(state.myCart))}
+        else {return temp.amount += action.payload.amount,localStorage.setItem("myCart", JSON.stringify(state.myCart))}
+      } else {
+        console.log("no")
+        state.myCart = [...state.myCart, action.payload]
+      }
+      localStorage.setItem("myCart", JSON.stringify(state.myCart))
+      console.table(state.myCart)
     },
+
+
+
+
+
+    // if (temp) {
+    //   temp.amount += action.payload.amount;
+    // } else {
+    //   console.log("no")
+    //   state.myCart = [...state.myCart, action.payload]
+    // }
+    // localStorage.setItem("myCart", JSON.stringify(state.myCart))
+    // console.table(state.myCart)
     deleteCart: (state, action) => {
       // console.log(action.payload)
       state.myCart = ([])
@@ -31,7 +65,7 @@ export const cartSlice = createSlice({
       state.myCart = state.myCart.filter(x => x._id !== action.payload)
       console.log(state.myCart)
 
-      localStorage.setItem("myCart", JSON.stringify(state.myCart))   
+      localStorage.setItem("myCart", JSON.stringify(state.myCart))
 
     },
     changeAmount: (state, action) => {
@@ -46,7 +80,7 @@ export const cartSlice = createSlice({
 });
 
 // methods to export
-export const { addItemToCart, deleteCart,removeItemFromCart, DelFromCart, changeAmount } = cartSlice.actions;
+export const { addItemToCart, deleteCart, removeItemFromCart, DelFromCart, changeAmount } = cartSlice.actions;
 
 
 // selctors to export

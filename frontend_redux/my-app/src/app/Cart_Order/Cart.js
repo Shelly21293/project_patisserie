@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCustomerProdList, getDataAsync, delDataAsync } from '../customerSlice';
-import { selectMyCart,addItemToCart, deleteCart,removeItemFromCart } from './cartSlice'
+import { selectMyCart, addItemToCart, deleteCart, removeItemFromCart } from './cartSlice'
 import { addOrderAsync } from './orderSlice';
 import { doSigninAsync, selectEmail, selectUserName, logout, selectToken, doSignupAsync, selectStaff } from '../Login/loginSlice'
 import * as React from 'react';
@@ -33,9 +33,9 @@ export function Cart() {
   const myCart = useSelector(selectMyCart);
   const token = useSelector(selectToken);
 
-  const CheckOut = ({myCart, token}) => {
-console.log("hi")
-    dispatch(addOrderAsync({myCart, token }))
+  const CheckOut = ({ myCart, token }) => {
+    console.log("hi")
+    dispatch(addOrderAsync({ myCart, token }))
     dispatch(deleteCart())
   }
 
@@ -73,7 +73,21 @@ console.log("hi")
               <CardHeader
                 subheader={prod.price}
               />
-              <IconButton color="primary" aria-label="remove from cart"  onClick={() => dispatch(removeItemFromCart(prod._id))}>
+
+              <div>
+                <button
+                  onClick={() => dispatch(addItemToCart({ _id: prod._id, desc: prod.desc, price: prod.price, image: prod.image, amount: 1 }))}
+                >
+                  +
+                </button>
+                &nbsp; {prod.amount} &nbsp;
+                <button
+                  onClick={() => dispatch(addItemToCart({ _id: prod._id, desc: prod.desc, price: prod.price, image: prod.image, amount: -1 }))}
+                >
+                  -
+                </button>
+              </div> <br />
+              <IconButton color="primary" aria-label="remove from cart" onClick={() => dispatch(removeItemFromCart(prod._id))}>
                 Remove
               </IconButton>
               {/* <CardActions disableSpacing>
@@ -83,46 +97,46 @@ console.log("hi")
             </Card>
           </div>))}
       </ImageList>
-            {myCart.length >0 && <button onClick={() => dispatch(deleteCart())}>clear cart</button> }
-            <br />
-            <br />
-            {!token && myCart.length === 0 && <div> <i><h5>GO TO "Menu" to add products</h5></i></div>}
-            {!token && myCart.length >0 && <div> <i><h5>GO TO Login\Register to check out</h5></i></div>}
-            {token && myCart.length >0 && <button onClick={() => CheckOut({myCart, token}) }>Check Out</button>}
+      {myCart.length > 0 && <button onClick={() => dispatch(deleteCart())}>clear cart</button>}
+      <br />
+      <br />
+      {!token && myCart.length === 0 && <div> <i><h5>GO TO "Menu" to add products</h5></i></div>}
+      {!token && myCart.length > 0 && <div> <i><h5>GO TO Login\Register to check out</h5></i></div>}
+      {token && myCart.length > 0 && <button onClick={() => CheckOut({ myCart, token })}>Check Out</button>}
 
     </div>
 
-// const [myCart, setmyCart] = useState(useSelector(selectMyCart))
+    // const [myCart, setmyCart] = useState(useSelector(selectMyCart))
 
-  // run when component load- need to delete when runnung first time
+    // run when component load- need to delete when runnung first time
     // useEffect(() => {
     //   setmyCart(JSON.parse( localStorage.getItem("myCart") ))
     // }, [])
 
-  // useEffect(() => {
-  //   dispatch(getDataAsync());
-  // }, []);
-  // const DelFromCart = async(id) => {
+    // useEffect(() => {
+    //   dispatch(getDataAsync());
+    // }, []);
+    // const DelFromCart = async(id) => {
 
-  //   await setmyCart(myCart.filter(x => x._id !== id))
-  //   dispatch(addItemToCart(myCart.filter(x => x._id !== id)))
-  //   console.table(myCart.filter(x => x._id !== id))
-  //   console.table(myCart)
-    
-  //   localStorage.setItem("myCart", JSON.stringify(myCart.filter(x => x._id !== id)))
-  //   console.table(myCart)
-    
-  // }
+    //   await setmyCart(myCart.filter(x => x._id !== id))
+    //   dispatch(addItemToCart(myCart.filter(x => x._id !== id)))
+    //   console.table(myCart.filter(x => x._id !== id))
+    //   console.table(myCart)
 
-// const clearCart = async() => {
+    //   localStorage.setItem("myCart", JSON.stringify(myCart.filter(x => x._id !== id)))
+    //   console.table(myCart)
 
-  //   // await setmyCart([])
-  //   console.table(myCart)
-  //   dispatch(CartToSend())
-  //   // localStorage.setItem("myCart", JSON.stringify())
-  //   localStorage.clear()
-    
-  // }
+    // }
+
+    // const clearCart = async() => {
+
+    //   // await setmyCart([])
+    //   console.table(myCart)
+    //   dispatch(CartToSend())
+    //   // localStorage.setItem("myCart", JSON.stringify())
+    //   localStorage.clear()
+
+    // }
 
 
 
