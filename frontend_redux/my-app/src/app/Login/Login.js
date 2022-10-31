@@ -26,17 +26,16 @@ export const Login = () => {
       <br />
 
 
-      Name:  <input onChange={(e) => setNewUserName(e.target.value)} />
-      Pwd:  <input onChange={(e) => setNewPwd(e.target.value)} type='password' />
-      Email:  <input onChange={(e) => setNewEmail(e.target.value)} />
-      staff: <input onChange={(e) => setStaff(e.target.checked)} type={"checkbox"} />
+      Name:  <input onChange={(e) => setNewUserName(e.target.value)} /><br /><br />
+      Pwd:  <input onChange={(e) => setNewPwd(e.target.value)} type='password' /><br /><br />
+      Email:  <input onChange={(e) => setNewEmail(e.target.value)} /><br /><br />
+      {token && <div>Staff: <input onChange={(e) => setStaff(e.target.checked)} type={"checkbox"} /></div>}
       <br /><br />
 
-      Login
-      <br />
       <button onClick={() => dispatch(doSigninAsync({ username: newUserName, password: newPwd }))}>Login</button>{" "}
+      <button onClick={() => dispatch(logout({ id: 3, "name": "dany", "email": "aaa@" }))}>Logout</button><br /><br />
       <button onClick={() => dispatch(doSignupAsync({ username: newUserName, password: newPwd, email: newEmail, staff: staff }))}>register</button>{" "}
-      <button onClick={() => dispatch(logout({ id: 3, "name": "dany", "email": "aaa@" }))}>Logout</button>
+      
     </div>
   )
 }

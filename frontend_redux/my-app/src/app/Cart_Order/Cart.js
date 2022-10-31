@@ -70,23 +70,23 @@ export function Cart() {
                 height="194"
                 image={prod.image}
               />
-              <CardHeader
-                subheader={prod.price}
-              />
-
+              <i>Price: </i>{prod.price}
+              {/* <CardHeader subheader={prod.price}/> */}
+              {/* <i>Total: </i>{prod.price}*{amount} */}
               <div>
                 <button
-                  onClick={() => dispatch(addItemToCart({ _id: prod._id, desc: prod.desc, price: prod.price, image: prod.image, amount: 1 }))}
+                  onClick={() => dispatch(addItemToCart({ _id: prod._id, desc: prod.desc, price: prod.price, image: prod.image, amount: 1 ,total: 1}))}
                 >
                   +
                 </button>
                 &nbsp; {prod.amount} &nbsp;
                 <button
-                  onClick={() => dispatch(addItemToCart({ _id: prod._id, desc: prod.desc, price: prod.price, image: prod.image, amount: -1 }))}
+                  onClick={() => dispatch(addItemToCart({ _id: prod._id, desc: prod.desc, price: prod.price, image: prod.image, amount: -1, total: 1 }))}
                 >
                   -
                 </button>
               </div> <br />
+              <i>Total: </i>{prod.total}<br/>
               <IconButton color="primary" aria-label="remove from cart" onClick={() => dispatch(removeItemFromCart(prod._id))}>
                 Remove
               </IconButton>
@@ -95,7 +95,8 @@ export function Cart() {
 
 
             </Card>
-          </div>))}
+          </div>))
+        }
       </ImageList>
       {myCart.length > 0 && <button onClick={() => dispatch(deleteCart())}>clear cart</button>}
       <br />

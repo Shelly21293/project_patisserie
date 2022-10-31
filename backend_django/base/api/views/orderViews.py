@@ -36,14 +36,20 @@ def addOrder(request):
     order= request.data
     user = request.user
     print(user)
-    new_order_id= Order.objects.create(user_id=user)
+    order_total=0
+    for x in order:
+        prod_total= x["total"]
+        order_total= order_total + int(prod_total)
+    # total_order= request.data[""]
+    new_order_id= Order.objects.create(user_id=user, total=order_total)
     print(order)
     for x in order:
         print(x)
-
         prod_id=Product.objects.get(_id=x["_id"])
+        prod_amount= x["amount"]
+        prod_total= x["total"]
         # category_id=Category.objects.get(_id=x["category_id"])
-        OrderDetail.objects.create(order_id=new_order_id,product_id=prod_id)
+        OrderDetail.objects.create(order_id=new_order_id,product_id=prod_id,amount= prod_amount, total=prod_total)
     return Response("Order created")
 
 

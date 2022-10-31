@@ -38,7 +38,6 @@ const ExpandMore = styled((props) => {
 export function Product() {
   let params = useParams();
   let cat_id = params.id;
-  // const [myCart, setmyCart] = useState([])
 
   const myCart = useSelector(selectMyCart);
 
@@ -109,7 +108,7 @@ export function Product() {
               <CardHeader
                 subheader={prod.price}
               />
-              <IconButton color="primary" aria-label="add to shopping cart" onClick={() =>  dispatch(addItemToCart({ _id: prod._id, desc: prod.desc, price: prod.price, image:prod.image, amount: 1 }))}>
+              <IconButton color="primary" aria-label="add to shopping cart" onClick={() =>  dispatch(addItemToCart({ _id: prod._id, desc: prod.desc, price: prod.price, image:prod.image, amount: 1 ,total: prod.price}))}>
                 Add to cart<AddShoppingCartIcon />
               </IconButton>
               {/* <CardActions disableSpacing>

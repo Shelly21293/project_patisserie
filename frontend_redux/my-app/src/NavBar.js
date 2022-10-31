@@ -23,17 +23,18 @@ const NavBar = () => {
                     <li className="nav-item">
                         <Link className="nav-link " to="/menu">MENU</Link>
                     </li>
-                    <li className="nav-item">
-                        <Link className="nav-link " to="/login">Login\Register</Link>
-                    </li>
+                    
                     <li className="nav-item">
                         <Link className="nav-link " to="/cart">MyCart</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link " to="/login">Login\Register</Link>
                     </li>
                     {isStaff && <li className="nav-item">
                         <Link className="nav-link " to="/staffGUI">STAFF GUI</Link>
                     </li>}
                     {isStaff && <li className="nav-item">
-                        <Link className="nav-link " to="/Admin">ADMIN GUI</Link>
+                        <Link className="nav-link " to="/Admin">ADMIN WEB</Link>
                     </li>}
                 </ul>
                 {/* </div> */}
