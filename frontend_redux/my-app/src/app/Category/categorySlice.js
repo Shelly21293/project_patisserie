@@ -15,21 +15,21 @@ export const getCategoryAsync = createAsyncThunk('category/getData',async () => 
   }
 );
 
-export const addCategoryAsync = createAsyncThunk('cart/addData',async (newData) => {
-    const response = await addData(newData);
+export const addCategoryAsync = createAsyncThunk('category/addData',async (newData) => {
+    const response = await addData(newData.cat, newData.token);
     // console.log(response.data);
     return response.data;
   }
 );
 
-export const delCategoryAsync = createAsyncThunk('cart/delData',async (newData) => {
+export const delCategoryAsync = createAsyncThunk('category/delData',async (newData) => {
     const response = await delData(newData.id, newData.token);
     // console.log(response)
     return response.data;
   }
 );
 
-export const updCategoryAsync = createAsyncThunk('shop/updData',async (newData) => {
+export const updCategoryAsync = createAsyncThunk('category/updData',async (newData) => {
   const response = await updData(newData.cat, newData.id, newData.token);
   // console.log(response.data);
   return response.data;
@@ -51,6 +51,7 @@ export const categorySlice = createSlice({
         state.status = 'Done';
         console.log(action.payload);
         state.categoryList =action.payload;
+        
       },)
       .addCase(addCategoryAsync.fulfilled, (state, action) => {
         state.status = 'Done';
@@ -65,7 +66,7 @@ export const categorySlice = createSlice({
 
       .addCase(updCategoryAsync.fulfilled, (state, action) => {
         state.status = 'Done';
-        // console.log(action.payload);
+        console.log(action);
         // let updProd = state.category.find((x) => x.id === action.payload.id);
         // updProd.desc = action.payload.desc;
         // updProd.price = action.payload.price;

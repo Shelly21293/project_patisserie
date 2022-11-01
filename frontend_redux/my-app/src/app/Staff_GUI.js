@@ -18,11 +18,11 @@ const Staff_GUI = () => {
 
             <nav className="navbar navbar-expand-sm bg-light navbar-light justify-content-center">
                 <ul className="navbar-nav ">
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                         <Link className="nav-link" to="/staffGUI/add_new">Add New</Link>
-                    </li>
+                    </li> */}
                     <li className="nav-item">
-                        <Link className="nav-link" to="/staffGUI/delete_update">Delete\ Update</Link>
+                        <Link className="nav-link" to="/staffGUI/category_product">Category\ Product</Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link " to="/staffGUI/customers">Customers</Link>

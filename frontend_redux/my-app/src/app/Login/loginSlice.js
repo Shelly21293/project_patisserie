@@ -9,6 +9,7 @@ const initialState = {
     token: "",
     logged: false,
     staff: false,
+    superuser: false,
 };
 
 // async (1)
@@ -43,6 +44,7 @@ export const loginSlice = createSlice({
             state.userName = ""
             state.email = ""
             state.staff= false
+            state.superuser= false
         },
     },
     //  async  (3)
@@ -57,6 +59,7 @@ export const loginSlice = createSlice({
                     state.userName = jwt_decode(action.payload.access).username
                     state.email = jwt_decode(action.payload.access).email
                     state.staff = jwt_decode(action.payload.access).staff
+                    state.superuser = jwt_decode(action.payload.access).superuser
                    
                 }
             }).addCase(doSignupAsync.fulfilled, (state, action) => {
@@ -82,5 +85,6 @@ export const selectEmail = (state) => state.login.email;
 export const selectUserName = (state) => state.login.userName;
 export const selectToken = (state) => state.login.token;
 export const selectStaff = (state) => state.login.staff;
+export const selectSuperUser = (state) => state.login.superUser;
 // export the reducer to the applicaion
 export default loginSlice.reducer;

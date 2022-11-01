@@ -17,7 +17,11 @@ import Staff_GUI from './app/Staff_GUI';
 import TTest from './app/TTest';
 
 import Product_Staff_GUI from './app/Product/Product_Staff_GUI';
+
+import Product_Staff_GUI_ADD from './app/Product/Product_Staff_GUI_ADD';
 import Category_Staff_GUI from './app/Category/Category_Staff_GUI';
+
+import Category_Staff_GUI_ADD from './app/Category/Category_Staff_GUI_ADD';
 import Admin from './Admin';
 
 
@@ -47,10 +51,14 @@ root.render(
               {/* <Route path="/staffGUI/products" element={<Product_Staff_GUI />} /> */}
             </Route>
 
-            <Route path="/staffGUI/delete_update" element={<Category_Staff_GUI />} >
+            {/* <Route path="/staffGUI/add_new" element={<Category_Staff_GUI_ADD />} >
+              <Route path=":id" element={<Product_Staff_GUI_ADD />} />
+            </Route> */}
+
+            <Route path="/staffGUI/category_product" element={<Category_Staff_GUI />} >
               <Route path=":id" element={<Product_Staff_GUI />} />
             </Route>
-            <Route path="/staffGUI/products" element={<Product_Staff_GUI />} />
+            {/* <Route path="/staffGUI/add_new" element={<Product_Staff_GUI_ADD />} /> */}
             {/* <Route path="/staffGUI/categories" element={<Category_Staff_GUI />} /> */}
             <Route path="/staffGUI/customers" element={<Product_Staff_GUI />} />
             

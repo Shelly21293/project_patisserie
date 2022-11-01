@@ -39,19 +39,19 @@ const ExpandMore = styled((props) => {
 export function Product_Staff_GUI() {
   let params = useParams();
   let cat_id = params.id;
+  const [myCart, setmyCart] = useState([])
   const prodList = useSelector(selectProdList);
   const token = useSelector(selectToken);
   const dispatch = useDispatch();
   const [desc, setDesc] = useState("");
   const [price, setPrice] = useState(0);
+  const [category, setCategory] = useState(0);
   const [expanded, setExpanded] = React.useState(false);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
   const [change1, setChange1] = useState("false");
   const [change2, setChange2] = useState("0");
-  const [change3, setChange3] = useState("0");
-
 
   // let change= false;
 
@@ -71,13 +71,13 @@ export function Product_Staff_GUI() {
   // how to perform use effect so each time when the data is updated- we will see it?
   useEffect(() => {
     dispatch(getProductAsync(cat_id))
-  }, [change1, change2, change3])
+  }, [change1, change2])
 
   // useEffect(() => {
   //   dispatch(getProductAsync(cat_id))
   // }, [prodList])
 
-  const refresh = () => { dispatch(getProductAsync(cat_id)) }
+
 
   return (
 
@@ -85,20 +85,13 @@ export function Product_Staff_GUI() {
       <h3 className="mt-4"><i>Our Products</i></h3>
 
       <div>
-        <h5 className="mt-4"><i>Update\ Add new product</i></h5>
-        <i>Description: </i>
+        <h5 className="mt-4"><i>fields to update</i></h5>
+        <i>Desc: </i>
         <input onChange={(e) => setDesc(e.target.value)} />
         <br />
         <br />
         <i>Price: </i>
         <input onChange={(e) => setPrice(e.target.value)} />
-        <br /><br />
-        <button
-        onClick={() => {
-          dispatch(addProductAsync({ prod: {desc: desc, price: price, category_id: cat_id}, token: token }))
-          setChange3(desc)
-        }}>Add New Product to the choosen category
-      </button>
         <br />
         <br />
       </div>
@@ -144,10 +137,7 @@ export function Product_Staff_GUI() {
             </Card>
           </div>))}
       </ImageList>
-      <button
-        onClick={() =>
-          refresh()
-        }>Refresh</button>
+
 
     </div>
 

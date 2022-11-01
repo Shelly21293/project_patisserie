@@ -15,10 +15,14 @@ export function getData() {
   );
 }
 
-export const addData = (newData) => {
+export const addData = (newData, token) => {
   // console.log(newData);
   return new Promise((resolve) =>
-    axios.post(SERVER_URL_ADD, newData).then((res) => resolve({ data: res.data }))
+    axios.post(SERVER_URL_ADD, newData,{
+      headers: {
+          'Authorization': `Bearer ${token}`
+      }
+  }).then((res) => resolve({ data: res.data }))
   );
 };
 

@@ -21,7 +21,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['username'] = user.username
         token['email'] = user.email
         token['staff'] = user.is_staff
-        token['admin'] = user.is_superuser
+        token['superuser'] = user.is_superuser
         # ...
 
         return token

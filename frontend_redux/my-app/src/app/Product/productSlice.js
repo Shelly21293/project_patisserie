@@ -16,7 +16,7 @@ export const getProductAsync = createAsyncThunk('product/getData',async (cat_id)
 );
 
 export const addProductAsync = createAsyncThunk('product/addData',async (newData) => {
-    const response = await addData(newData);
+    const response = await addData(newData.prod, newData.token);
     // console.log(response.data);
     return response.data;
   }
