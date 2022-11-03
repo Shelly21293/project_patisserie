@@ -23,6 +23,8 @@ import Category_Staff_GUI from './app/Category/Category_Staff_GUI';
 
 import Category_Staff_GUI_ADD from './app/Category/Category_Staff_GUI_ADD';
 import Admin from './Admin';
+import Order from './app/Cart_Order/Order';
+import OrderDetails from './app/Cart_Order/OrderDetails';
 
 
 const container = document.getElementById('root');
@@ -38,30 +40,26 @@ root.render(
         <Routes>
           <Route path="/" element={<App />}>
             <Route path="/" element={<Home />} />
-            <Route path="/Admin" element={<Admin />} />
             <Route path="/login" element={<Login />} />
             <Route path="/about" element={<About />} />
-            <Route path="/cart" element={<Cart />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/menu/product" element={<Product />} />
             <Route path="/menu/category" element={<Category />} >
               <Route path=":id" element={<Product />} />
             </Route>
-            <Route path="/staffGUI" element={<Staff_GUI />} >
-              {/* <Route path="/staffGUI/products" element={<Product_Staff_GUI />} /> */}
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/myOrders" element={<Order />} >
+              <Route path=":id" element={<OrderDetails />} />
             </Route>
 
-            {/* <Route path="/staffGUI/add_new" element={<Category_Staff_GUI_ADD />} >
-              <Route path=":id" element={<Product_Staff_GUI_ADD />} />
-            </Route> */}
-
+            <Route path="/staffGUI" element={<Staff_GUI />} />
             <Route path="/staffGUI/category_product" element={<Category_Staff_GUI />} >
               <Route path=":id" element={<Product_Staff_GUI />} />
             </Route>
-            {/* <Route path="/staffGUI/add_new" element={<Product_Staff_GUI_ADD />} /> */}
-            {/* <Route path="/staffGUI/categories" element={<Category_Staff_GUI />} /> */}
             <Route path="/staffGUI/customers" element={<Product_Staff_GUI />} />
-            
+
+            <Route path="/Admin" element={<Admin />} />
+
           </Route>
         </Routes>
 

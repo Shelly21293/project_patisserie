@@ -9,11 +9,13 @@ class OrderDetailSerializer(ModelSerializer):
  
     def getOrderDetail(self,obj):
         return {
-                "id":obj._id,
                 "order_id":obj.order._id,
                 "product_id":obj.product._id,
+                "product_desc":obj.product.desc,
                 "category_id":obj.category._id,
+                "category_desc":obj.category.desc,
                 "quantity":obj.quantity,
+                "total":obj.total,
                 
             }
 

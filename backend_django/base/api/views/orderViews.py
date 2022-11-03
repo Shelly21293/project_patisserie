@@ -15,17 +15,46 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 # GET 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def getOrdersForUser(request, id=0):
+def getOrdersForUser(request):
     user = request.user
-    if int(id) > 0: # GET orderdetails per order for user
-        order_id = Order.objects.get(_id=id)
-        orderDetails=user.orderDetail_set.get(order_id=order_id)
-        serializer = orderDetailSerialize.OrderDetailSerializer(orderDetails, many=True)
-        return Response(serializer.data)
-    else: # GET orders for user
-        oldOrders= user.order_set.all()
-        serializer = orderSerialize.OrderSerializer(oldOrders, many=True)
-        return Response(serializer.data)
+    oldOrders= user.order_set.all()
+    serializer = orderSerialize.OrderSerializer(oldOrders, many=True)
+
+    # serializer = orderSerialize.OrderSerializer.getOldOrders(oldOrders, many=True)
+    return Response(serializer.data)
+    
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def getOrderDetails(request, id=0):
+    order_id = Order.objects.get(_id=id)
+    print(id)
+    print(order_id)
+    orderDetails=OrderDetail.objects.filter(order_id=order_id)
+    print(orderDetails)
+    serializer = orderDetailSerialize.OrderDetailSerializer(orderDetails, many=True)
+    # serializer = orderDetailSerialize.OrderDetailSerializer().getOrderDetail(orderDetails)
+    return Response(serializer.data)
+   
+
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+# def getOrdersForUser(request, id=0):
+#     user = request.user
+#     if int(id) > 0: # GET orderdetails per order for user
+#         order_id = Order.objects.get(_id=id)
+#         print(id)
+#         print(order_id)
+#         orderDetails=OrderDetail.objects.filter(order_id=order_id)
+#         print(orderDetails)
+#         serializer = orderDetailSerialize.OrderDetailSerializer(orderDetails, many=True)
+#         # serializer = orderDetailSerialize.OrderDetailSerializer().getOrderDetail(orderDetails)
+#         return Response(serializer.data)
+#     else: # GET orders for user
+#         oldOrders= user.order_set.all()
+#         serializer = orderSerialize.OrderSerializer(oldOrders, many=True)
+
+#         # serializer = orderSerialize.OrderSerializer.getOldOrders(oldOrders, many=True)
+#         return Response(serializer.data)
 
 
 
@@ -64,13 +93,13 @@ def getOrders(request):
     return Response(serializer.data)
 
 # GET orderdetails per order
-@api_view(['GET'])
-@permission_classes([IsAdminUser])
-def getOrderDetails(request, id=0):
-    order_id = Order.objects.get(_id=id)
-    orderDetails=OrderDetail.objects.get(order_id=order_id)
-    serializer = orderDetailSerialize.OrderDetailSerializer(orderDetails, many=True)
-    return Response(serializer.data)
+# @api_view(['GET'])
+# @permission_classes([IsAdminUser])
+# def getOrderDetails(request, id=0):
+#     order_id = Order.objects.get(_id=id)
+#     orderDetails=OrderDetail.objects.get(order_id=order_id)
+#     serializer = orderDetailSerialize.OrderDetailSerializer(orderDetails, many=True)
+#     return Response(serializer.data)
 
 
 @api_view(['DELETE'])

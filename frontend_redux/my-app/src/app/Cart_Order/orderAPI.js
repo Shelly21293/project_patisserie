@@ -3,14 +3,30 @@ import axios from "axios";
 
 
 const SERVER_URL_ADD_ORDER = "http://127.0.0.1:8000/api/addorder/"
+const SERVER_URL_GET_ORDER = "http://127.0.0.1:8000/api/getordersforuser/"
+const SERVER_URL_GET_ORDER_DETAILS = "http://127.0.0.1:8000/api/getorderDetails/"
 
 
 
-// export function getData() {
-//   return new Promise((resolve) =>
-//   axios(SERVER_URL).then((res) => resolve({ data: res.data })),
-//   );
-// }
+export function getData1(token) {
+  return new Promise((resolve) =>
+  axios(SERVER_URL_GET_ORDER, {
+    headers: {
+        'Authorization': `Bearer ${token}`
+    }
+}).then((res) => resolve({ data: res.data })),
+  );
+}
+
+export function getData2(id,token) {
+  return new Promise((resolve) =>
+  axios(SERVER_URL_GET_ORDER_DETAILS + id, {
+    headers: {
+        'Authorization': `Bearer ${token}`
+    }
+}).then((res) => resolve({ data: res.data })),
+  );
+}
 
 export const addData = (myCart,token) => {
   // console.log(newData);

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Outlet, Link } from "react-router-dom";
 import { selectCustomerProdList, getDataAsync, delDataAsync } from '../customerSlice';
 import { selectMyCart, addItemToCart, deleteCart, removeItemFromCart } from './cartSlice'
 import { addOrderAsync } from './orderSlice';
@@ -40,7 +41,7 @@ export function Cart() {
   }
 
   return (
-    <div style={{ backgroundColor: "#fffae6" }}>
+    <div >
       <h3 className="mt-4"><i>My selections</i></h3>
 
 
@@ -102,7 +103,7 @@ export function Cart() {
       <br />
       <br />
       {!token && myCart.length === 0 && <div> <i><h5>GO TO "Menu" to add products</h5></i></div>}
-      {!token && myCart.length > 0 && <div> <i><h5>GO TO Login\Register to check out</h5></i></div>}
+      <Link to="/login">{!token && myCart.length > 0 && <div> <i><h5>GO TO Login\Register to check out</h5></i></div>}</Link>
       {token && myCart.length > 0 && <button onClick={() => CheckOut({ myCart, token })}>Check Out</button>}
 
     </div>

@@ -53,13 +53,13 @@ urlpatterns = [
     # Order route's
   
     path('getordersforuser/', orderViews.getOrdersForUser),
-    path('getordersforUser/<id>', orderViews.getOrdersForUser),
+    path('getorderDetails/<id>', orderViews.getOrderDetails),
 
     path('addorder/', orderViews.addOrder),
 
     # Admin
     path('getorders/', orderViews.getOrders),
-    path('getorderDetails/', orderViews.getOrderDetails),
+    
 
 
     # path('deleteOrders/', orderViews.deleteOrders), *to active in case need to delete ALL orders

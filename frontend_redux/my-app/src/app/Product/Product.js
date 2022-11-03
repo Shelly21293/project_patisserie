@@ -59,25 +59,8 @@ export function Product() {
     dispatch(getProductAsync(cat_id));}
   }, [cat_id]);
 
-  // run when component load- need to delete when runnung first time
-  // useEffect(() => {
-  //   if (localStorage.getItem("myCart"))
-  //   setmyCart(JSON.parse( localStorage.getItem("myCart") ))
-  // }, [])
-
-
-  // const addToCart = (item) => {   
-  //   // console.log(myCart)
-  //   dispatch(addItemToCart(item))
-    
-    
-  // }
-
-
-  
-
   return (
-    <div style={{ backgroundColor: "#fffae6" }}>
+    <div >
       <h3 className="mt-4"><i>Our Products</i></h3>
 
 
@@ -100,11 +83,17 @@ export function Product() {
                 title=<i>{prod.desc}</i>
               // subheader={prod.price}
               />
-              <CardMedia
+              
+              <img style={{ width: "100%", maxWidth: "1000px", height: "200px" }} src={`http://127.0.0.1:8000/media/products/${prod.category_id}/${prod.image}`}></img>
+
+                
+            
+              {/* <CardMedia
                 component="img"
                 height="194"
                 image={prod.image}
-              />
+                
+              /> */}
               <CardHeader
                 subheader={prod.price}
               />

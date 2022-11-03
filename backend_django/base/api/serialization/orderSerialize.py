@@ -14,4 +14,11 @@ class OrderSerializer(ModelSerializer):
                 "user_name":obj.user.username,
                 "createdTime":obj.createdTime,
             }
+    
+    def getOldOrders(self,obj):
+        return {
+
+                "createdTime":obj.createdTime,
+                "total" :obj.total,
+            }
 

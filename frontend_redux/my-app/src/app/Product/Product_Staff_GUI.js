@@ -81,7 +81,9 @@ export function Product_Staff_GUI() {
 
   return (
 
-    <div style={{ backgroundColor: "#fffae6", width: "fixed", height: "fixed" }}>
+    <div >
+
+{/* style={{ backgroundColor: "#fffae6", width: "fixed", height: "fixed" }} */}
       <h3 className="mt-4"><i>Our Products</i></h3>
 
       <div>

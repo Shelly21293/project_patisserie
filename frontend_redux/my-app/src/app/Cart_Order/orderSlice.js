@@ -1,19 +1,27 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { addData } from './orderAPI';
+import { getData1, getData2, addData } from './orderAPI';
 
 const initialState = {
   orderList:[],
+  orderDetailList :[],
   value: 0,
   status: 'idle',
 };
 
 // Async methodes
-// export const getDataAsync = createAsyncThunk('order/getData',async () => {
-//     const response = await getData();
-//     // console.log(response.data);
-//     return response.data;
-//   }
-// );
+export const getOrderAsync = createAsyncThunk('order/getData1',async (token) => {
+    const response = await getData1( token);
+    // console.log(response.data);
+    return response.data;
+  }
+);
+
+export const getOrderDetailAsync = createAsyncThunk('order/getData2',async (payloud) => {
+  const response = await getData2(payloud.id, payloud.token);
+  // console.log(response.data);
+  return response.data;
+}
+);
 
 export const addOrderAsync = createAsyncThunk('order/addData',async (payloud) => {
     const response = await addData(payloud.myCart, payloud.token);
@@ -48,11 +56,16 @@ export const orderSlice = createSlice({
   extraReducers: (builder) => {
     builder
       
-      // .addCase(getDataAsync.fulfilled, (state, action) => {
-      //   state.status = 'Done';
-      //   // console.log(action.payload);
-      //   state.cartList =action.payload;
-      // },)
+      .addCase(getOrderAsync.fulfilled, (state, action) => {
+        state.status = 'Done';
+        console.log(action.payload);
+        state.orderList =action.payload;
+      },)
+      .addCase(getOrderDetailAsync.fulfilled, (state, action) => {
+        state.status = 'Done';
+        console.log(action.payload);
+        state.orderDetailList =action.payload;
+      },)
       .addCase(addOrderAsync.fulfilled, (state, action) => {
         state.status = 'Done';
         // console.log(action.payload);
@@ -81,5 +94,6 @@ export const orderSlice = createSlice({
 // selctors to export
 // export const selectMyOrder = (state) => state.order.myCart;
 export const selectOrderList = (state) => state.order.orderList;
+export const selectOrderDetailList = (state) => state.order.orderDetailList;
 
 export default orderSlice.reducer;
