@@ -66,11 +66,12 @@ export function Cart() {
                 title=<i>{prod.desc}</i>
               // subheader={prod.price}
               />
-              <CardMedia
+              <img style={{ width: "100%", maxWidth: "1000px", height: "200px" }} src={`http://127.0.0.1:8000/media/products/${prod.category_id}/${prod.image}`}></img>
+              {/* <CardMedia
                 component="img"
                 height="194"
                 image={prod.image}
-              />
+              /> */}
               <i>Price: </i>{prod.price}
               {/* <CardHeader subheader={prod.price}/> */}
               {/* <i>Total: </i>{prod.price}*{amount} */}

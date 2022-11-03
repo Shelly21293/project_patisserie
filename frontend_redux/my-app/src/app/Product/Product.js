@@ -97,7 +97,7 @@ export function Product() {
               <CardHeader
                 subheader={prod.price}
               />
-              <IconButton color="primary" aria-label="add to shopping cart" onClick={() =>  dispatch(addItemToCart({ _id: prod._id, desc: prod.desc, price: prod.price, image:prod.image, amount: 1 ,total: prod.price}))}>
+              <IconButton color="primary" aria-label="add to shopping cart" onClick={() =>  dispatch(addItemToCart({ _id: prod._id, desc: prod.desc, category_id: prod.category_id, price: prod.price, image:prod.image, amount: 1 ,total: prod.price}))}>
                 Add to cart<AddShoppingCartIcon />
               </IconButton>
               {/* <CardActions disableSpacing>
