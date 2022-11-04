@@ -114,11 +114,13 @@ export function Product_Staff_GUI() {
 
                 title=<i>{prod.desc}</i>
               />
-              <CardMedia
+              <img style={{ width: "100%", maxWidth: "1000px", height: "200px" }} src={`http://127.0.0.1:8000/media/products/${prod.category_id}/${prod.image}`}></img>
+
+              {/* <CardMedia
                 component="img"
                 height="194"
                 image={prod.image}
-              />
+              /> */}
               <CardHeader
                 subheader={prod.price}
               />
