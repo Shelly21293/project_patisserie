@@ -1,3 +1,31 @@
+# patisserie project
+This project was written by python, js, html on windows 10 system
+BE- django
+FE- react redux
+This project was created for patisserie shop to sell cakes online.
+*need to complete charge page 
+Git address: "https://github.com/Shelly21293/project_patisserie.git"
+Need to run following commands to active project:
+- git clone https://github.com/Shelly21293/project_patisserie.git
+open 2 terminals:
+BE terminal:
+- cd .\backend_django\
+- pip install virtualenv
+- python -m virtualenv myenv
+- myenv\Scripts\activate
+- pip install -r requirements.txt
+- py .\manage.py runserver
+FE terminal:
+- cd .\frontend_redux\
+- cd .\my-app\ 
+- npm install axios
+- npm install @mui/material @emotion/react @emotion/styled
+- npm install @mui/material @mui/styled-engine-sc styled-components
+- npm i
+- npm start
+
+
+
 # Getting Started with Create React App and Redux
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
