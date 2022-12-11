@@ -53,15 +53,8 @@ export function Product_Staff_GUI() {
   const [change3, setChange3] = useState("0");
 
 
-  // let change= false;
 
-
-  //run every time we open menu page
-  // useEffect(() => {
-  //   dispatch(getProductAsync(0))
-  // }, [])
-
-  //run every time we switch category
+  //run every time we choose category
   useEffect(() => {
     if (cat_id) {
       dispatch(getProductAsync(cat_id));
@@ -72,10 +65,6 @@ export function Product_Staff_GUI() {
   useEffect(() => {
     dispatch(getProductAsync(cat_id))
   }, [change1, change2, change3])
-
-  // useEffect(() => {
-  //   dispatch(getProductAsync(cat_id))
-  // }, [prodList])
 
   const refresh = () => { dispatch(getProductAsync(cat_id)) }
 
@@ -104,17 +93,17 @@ export function Product_Staff_GUI() {
         <br />
         <br />
       </div>
-      <ImageList sx={{ width: "fixed", height: "fixed" }} cols={3} gap={12}>
+      <ImageList cols={4} gap={12}>
 
         {prodList.map((prod) => (
           <div >
 
-            <Card sx={{ maxWidth: 345, textAlign: "center" }} >
+            <Card sx={{  width: "350px", height: "450px" , objectFit: "cover" }} >
               <CardHeader
 
                 title=<i>{prod.desc}</i>
               />
-              <img style={{ width: "100%", maxWidth: "1000px", height: "200px" }} src={`http://127.0.0.1:8000/media/products/${prod.category_id}/${prod.image}`}></img>
+              <img style={{ width: "250px", height: "250px" , objectFit: "cover" }} src={`http://127.0.0.1:8000/media/products/${prod.category_id}/${prod.image}`}></img>
 
               {/* <CardMedia
                 component="img"
@@ -159,42 +148,3 @@ export function Product_Staff_GUI() {
 }
 
 export default Product_Staff_GUI
-
-
-// admin product
-// <div>
-    //   <h3 className="mt-4"><i>Our Products</i></h3>
-    //   {prodList.map((prod) => (
-    //     <div>
-    //       Desc: {prod.desc} {", "} Price: {prod.price}</div>))}
-    //   {/* <h1>Admin GUI</h1>
-    //   // <div>
-    //   //   Desc:
-    //   //   <input onChange={(e) => setDesc(e.target.value)} />
-    //   //   <br />
-    //   //   Price:
-    //   //   <input onChange={(e) => setPrice(e.target.value)} />
-    //   //   <button
-    //   //     onClick={() => dispatch(addDataAsync({ desc: desc, price: price }))}
-    //   //   >
-    //   //     Add Product
-    //   //   </button>
-    //   // </div>
-    //   // <hr />
-    //   // Number of products in shop: {prodList.length}
-    //   // <hr />
-    //   // {prodList.map((prod) => (
-    //   //   <div>
-    //   //     Desc: {prod.desc} {", "} Price: {prod.price}
-    //   //     <button onClick={() => dispatch(delDataAsync(prod.id))}>
-    //   //       Delete
-    //   //     </button>
-
-    //   //     <button onClick={() => dispatch(updDataAsync({
-    //   //       desc: desc,
-    //   //       price: price,
-    //   //       id: prod.id,
-    //   //     }))}>Update</button>
-    //   //   </div>
-    //   //   ))} */}
-    // </div>

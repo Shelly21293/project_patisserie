@@ -64,11 +64,12 @@ export function Product() {
       <h3 className="mt-4"><i>Our Products</i></h3>
 
 
-      <ImageList sx={{ width: "fixed", height: "fixed" }} cols={3} gap={12}>
+      <ImageList cols={3} gap={12}>
 
         {prodList.map((prod) => (
           <div >
-            <Card sx={{ maxWidth: 345 }} >
+            {/* maxWidth: 345,width: "fixed", height: "fixed", textAlign: "center" */}
+            <Card sx={{ width: "350px", height: "450px" , objectFit: "cover"}} >
               <CardHeader
                 // avatar={
                 //   <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -84,7 +85,7 @@ export function Product() {
               // subheader={prod.price}
               />
               
-              <img style={{ width: "100%", maxWidth: "1000px", height: "200px" }} src={`http://127.0.0.1:8000/media/products/${prod.category_id}/${prod.image}`}></img>
+              <img style={{ width: "250px", height: "250px" , objectFit: "cover"}} src={`http://127.0.0.1:8000/media/products/${prod.category_id}/${prod.image}`}></img>
 
                 
             

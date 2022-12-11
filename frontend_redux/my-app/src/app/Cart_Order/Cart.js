@@ -50,8 +50,7 @@ export function Cart() {
         {myCart && myCart.map((prod) => (
           <div >
 
-            {/* Desc: {prod.desc} {", "} Price: {prod.price} */}
-            <Card sx={{ maxWidth: 345 }} >
+            <Card sx={{ width: "350px", height: "480px" , objectFit: "cover" }} >
               <CardHeader
                 // avatar={
                 //   <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -66,13 +65,13 @@ export function Cart() {
                 title=<i>{prod.desc}</i>
               // subheader={prod.price}
               />
-              <img style={{ width: "100%", maxWidth: "1000px", height: "200px" }} src={`http://127.0.0.1:8000/media/products/${prod.category_id}/${prod.image}`}></img>
+              <img style={{ width: "250px", height: "250px" , objectFit: "cover" }} src={`http://127.0.0.1:8000/media/products/${prod.category_id}/${prod.image}`}></img>
               {/* <CardMedia
                 component="img"
                 height="194"
                 image={prod.image}
               /> */}
-              <i>Price: </i>{prod.price}
+              <br/><i>Price: </i>{prod.price}
               {/* <CardHeader subheader={prod.price}/> */}
               {/* <i>Total: </i>{prod.price}*{amount} */}
               <div>
@@ -108,59 +107,6 @@ export function Cart() {
       {token && myCart.length > 0 && <button onClick={() => CheckOut({ myCart, token })}>Check Out</button>}
 
     </div>
-
-    // const [myCart, setmyCart] = useState(useSelector(selectMyCart))
-
-    // run when component load- need to delete when runnung first time
-    // useEffect(() => {
-    //   setmyCart(JSON.parse( localStorage.getItem("myCart") ))
-    // }, [])
-
-    // useEffect(() => {
-    //   dispatch(getDataAsync());
-    // }, []);
-    // const DelFromCart = async(id) => {
-
-    //   await setmyCart(myCart.filter(x => x._id !== id))
-    //   dispatch(addItemToCart(myCart.filter(x => x._id !== id)))
-    //   console.table(myCart.filter(x => x._id !== id))
-    //   console.table(myCart)
-
-    //   localStorage.setItem("myCart", JSON.stringify(myCart.filter(x => x._id !== id)))
-    //   console.table(myCart)
-
-    // }
-
-    // const clearCart = async() => {
-
-    //   // await setmyCart([])
-    //   console.table(myCart)
-    //   dispatch(CartToSend())
-    //   // localStorage.setItem("myCart", JSON.stringify())
-    //   localStorage.clear()
-
-    // }
-
-
-
-
-    // <div style={{backgroundColor:"yellow"}}>
-    //   <h1>Cart GUI</h1>
-
-    //   {myCart.map((prod) => (
-    //     <div>
-    //       Desc: {prod.desc} {", "} Price: {prod.price}
-    //       {/* <button onClick={() => dispatch(delDataAsync(prod.id))}>
-    //         Remove
-    //       </button> */}
-
-    //     </div>
-    //   ))}
-
-    //   <button >
-    //     <h2 onClick={() => dispatch(addDataAsync(prodList))}>Check out</h2>
-    //   </button>
-    // </div>
   );
 }
 export default Cart

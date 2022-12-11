@@ -14,12 +14,11 @@ import { Cart } from './app/Cart_Order/Order'
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundColor: 'yellow',height: "200%" }}>
       <div style={{ backgroundColor: '#fffae6' }}>
         <Header></Header>
-
+        {/* '#fffae6' */}
         <NavBar></NavBar>
-        {/* <div className="container mt-5" style={{ width: "100%", height: "100%"}}> */}
         <div>
           <Outlet></Outlet>
         </div>
@@ -27,35 +26,6 @@ function App() {
 
       </div>
 
-
-
-
-
-
-      {/* <!-- Add a background color and large text to the whole page --> */}
-      {/* <Header></Header>
-      <NavBar></NavBar>
-
-
-
-
-      <div className="w3-sand w3-grayscale w3-large">
-        <div className="container mt-5">
-          {/* <Outlet></Outlet> */}
-      {/* <LoginPage></LoginPage>
-          <Footer></Footer>
-        </div> */}
-      {/* // </div> */}
-
-      {/* <Login />
-      <hr />
-      <Shop />
-      <hr />
-      <Customer />
-      <hr />
-
-      {/* GUI only- all methods from customer */}
-      {/* <Cart /> */}
     </div>
   );
 }

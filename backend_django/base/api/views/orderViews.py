@@ -34,28 +34,6 @@ def getOrderDetails(request, id=0):
     serializer = orderDetailSerialize.OrderDetailSerializer(orderDetails, many=True)
     # serializer = orderDetailSerialize.OrderDetailSerializer().getOrderDetail(orderDetails)
     return Response(serializer.data)
-   
-
-# @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
-# def getOrdersForUser(request, id=0):
-#     user = request.user
-#     if int(id) > 0: # GET orderdetails per order for user
-#         order_id = Order.objects.get(_id=id)
-#         print(id)
-#         print(order_id)
-#         orderDetails=OrderDetail.objects.filter(order_id=order_id)
-#         print(orderDetails)
-#         serializer = orderDetailSerialize.OrderDetailSerializer(orderDetails, many=True)
-#         # serializer = orderDetailSerialize.OrderDetailSerializer().getOrderDetail(orderDetails)
-#         return Response(serializer.data)
-#     else: # GET orders for user
-#         oldOrders= user.order_set.all()
-#         serializer = orderSerialize.OrderSerializer(oldOrders, many=True)
-
-#         # serializer = orderSerialize.OrderSerializer.getOldOrders(oldOrders, many=True)
-#         return Response(serializer.data)
-
 
 
 # POST

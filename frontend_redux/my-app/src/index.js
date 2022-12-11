@@ -14,14 +14,8 @@ import Cart from './app/Cart_Order/Cart';
 import Category from './app/Category/Category';
 import Product from './app/Product/Product'
 import Staff_GUI from './app/Staff_GUI';
-import TTest from './app/TTest';
-
 import Product_Staff_GUI from './app/Product/Product_Staff_GUI';
-
-import Product_Staff_GUI_ADD from './app/Product/Product_Staff_GUI_ADD';
 import Category_Staff_GUI from './app/Category/Category_Staff_GUI';
-
-import Category_Staff_GUI_ADD from './app/Category/Category_Staff_GUI_ADD';
 import Admin from './Admin';
 import Order from './app/Cart_Order/Order';
 import OrderDetails from './app/Cart_Order/OrderDetails';

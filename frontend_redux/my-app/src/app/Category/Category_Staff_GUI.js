@@ -22,9 +22,6 @@ const Category_Staff_GUI = () => {
 
   }, [change1, change2, change3])
 
-  // useEffect(() => {
-  //   dispatch(getCategoryAsync())
-  // }, [change1, change2, change3])
   const refresh = () => { dispatch(getCategoryAsync()) }
 
   return (
