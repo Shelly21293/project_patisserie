@@ -16,7 +16,7 @@ export const Login = () => {
 
   return (
     
-    <div class="w3-sand w3-grayscale w3-large" style={{ width: "fixed", height: "fixed"}}>
+    <div class="w3-sand w3-grayscale w3-large" >
       {/* // <div style={{backgroundColor:"green"}}> */}
       {/* for presentation */}
 

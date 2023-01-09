@@ -26,8 +26,11 @@ export function OrderDetails() {
       {/* {orders} */}
         {orderDetail.map((order) => (
         <div>
+          
+          
           Product: {order.product_id} {", "}
-           Total: {order.total}
+          Amount: {order.amount} {", "}
+          Total: {order.total} 
           
         </div>
       ))}

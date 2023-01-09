@@ -19,7 +19,7 @@ function App() {
         <Header></Header>
         {/* '#fffae6' */}
         <NavBar></NavBar>
-        <div>
+        <div style={{ minHeight: "800px" }}>
           <Outlet></Outlet>
         </div>
         <Footer></Footer>

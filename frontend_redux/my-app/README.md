@@ -2,7 +2,7 @@
 This project was written by python, js, html on windows 10 system
 BE- django
 FE- react redux
-This project was created for patisserie shop to sell cakes online.
+This project was created for patisserie shop to cell cakes online.
 *need to complete charge page 
 Git address: "https://github.com/Shelly21293/project_patisserie.git"
 Need to run following commands to active project:
@@ -18,10 +18,10 @@ BE terminal:
 FE terminal:
 - cd .\frontend_redux\
 - cd .\my-app\ 
+- npm i
 - npm install axios
 - npm install @mui/material @emotion/react @emotion/styled
 - npm install @mui/material @mui/styled-engine-sc styled-components
-- npm i
 - npm start
 
 

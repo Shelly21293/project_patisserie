@@ -25,10 +25,10 @@ export function Order() {
       {orders.map((order) => (
         <div>
           
-          <Link key={order._id} to={`/myOrders/${order._id}`}>Date: {order.createdTime} {", "} Total: {order.total}</Link>
-          {/* <button onClick={() => dispatch(delDataAsync(prod.id))}>
-            Remove
-          </button> */}
+          <Link key={order._id} to={`/myOrders/${order._id}`}>
+            Date: {order.createdTime} {", "} Total: {order.total}
+          </Link>
+        
 
         </div>
       ))}
